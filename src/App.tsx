@@ -2,6 +2,11 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import HomePage from "../src/pages/HomePage";
 // import Footer from "./components/Footer";
 import MenuPage from "./pages/MenuPage";
+import Appetizers from "./pages/Appetizers";
+import Salads from "./pages/Salads";
+import MainCourses from "./pages/MainCourses";
+import Drinks from "./pages/Drinks";
+import Footer from "./components/Footer";
 const App: React.FC = () => {
   return (
     <div>
@@ -9,8 +14,12 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/menu" element={<MenuPage />} />
+          <Route path="/appetizers" element={<Appetizers />} />
+          <Route path="/salads" element={<Salads />} />
+          <Route path="/maincourses" element={<MainCourses />} />
+          <Route path="/drinks" element={<Drinks />} />
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
       </BrowserRouter>
     </div>
   );

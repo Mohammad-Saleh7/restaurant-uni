@@ -1,6 +1,6 @@
-import { Scale } from "@mui/icons-material";
 import { Box, Button } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const buttonsName = [
   { en: "Appetizers", fa: "پیش‌غذاها" },
@@ -14,11 +14,13 @@ interface Props {
 }
 
 const ButtonHome: React.FC<Props> = ({ lang }) => {
+  const navigate = useNavigate();
   return (
     <div>
       <Box sx={{ display: "flex", gap: 2 }}>
         {buttonsName.map((el) => (
           <Button
+            onClick={() => navigate(`/${el.en.toLowerCase().replace(" ", "")}`)}
             key={el.en}
             variant="contained"
             sx={{

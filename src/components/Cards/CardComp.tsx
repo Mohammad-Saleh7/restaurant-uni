@@ -13,7 +13,7 @@ interface CardProps {
 
 export default function CardComp({ image, titleEn, titleFa, lang }: CardProps) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, boxShadow: 0 }}>
       <CardActionArea>
         <CardMedia component="img" height="350" image={image} alt={titleEn} />
         <CardContent sx={{ bgcolor: "#e2c58a", color: "#67341b" }}>
