@@ -35,5 +35,8 @@
   },
   "footer": {
     "rights": "© 2025 Aurora Bistro. All rights reserved."
+  },
+  "card": {
+    "price": "Price"
   }
 }

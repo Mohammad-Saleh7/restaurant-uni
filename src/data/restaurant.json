@@ -28,7 +28,7 @@
                 "fa": "نان تست شده با گوجه و ریحان تازه."
               },
               "price": 420000,
-              "image": "https://example.com/bruschetta.jpg"
+              "image": "/Tomato.png"
             },
             {
               "id": "item_calamari",
@@ -41,7 +41,7 @@
                 "fa": "کالاماری سوخاری طلایی با لیمو تازه."
               },
               "price": 650000,
-              "image": "https://example.com/calamari.jpg"
+              "image": "/Crispy.png"
             },
             {
               "id": "item_soup",
@@ -51,7 +51,7 @@
                 "fa": "سوپ مخصوص سرآشپز به همراه نان."
               },
               "price": 380000,
-              "image": "https://example.com/soup.jpg"
+              "image": "/Soup.png"
             },
             {
               "id": "item_hummus",
@@ -61,7 +61,7 @@
                 "fa": "حمص نرم با روغن زیتون."
               },
               "price": 310000,
-              "image": "https://example.com/hummus.jpg"
+              "image": "/Classic-Hummus.png"
             },
             {
               "id": "item_falafel",
@@ -71,7 +71,7 @@
                 "fa": "فلافل ترد کوچک با سس ارده."
               },
               "price": 290000,
-              "image": "https://example.com/falafel.jpg"
+              "image": "/Falafel-Bites.png"
             }
           ]
         },
@@ -100,7 +100,7 @@
                 "fa": "کاهو، زیتون و پنیر فتا."
               },
               "price": 560000,
-              "image": "https://example.com/mediterranean.jpg"
+              "image": "/Mediterranean-Salad.png"
             },
             {
               "id": "item_greek",
@@ -110,7 +110,7 @@
                 "fa": "سبزیجات تازه با پنیر فتا."
               },
               "price": 530000,
-              "image": "https://example.com/greek.jpg"
+              "image": "Greek-Salad.png"
             },
             {
               "id": "item_quinoa",
@@ -120,7 +120,7 @@
                 "fa": "کینوا با سبزیجات و سس لیمو."
               },
               "price": 610000,
-              "image": "https://example.com/quinoa.jpg"
+              "image": "/Quinoa-Bowl.png"
             }
           ]
         },
@@ -136,7 +136,7 @@
                 "fa": "استیک ریب‌آی گریل‌شده با سیب‌زمینی."
               },
               "price": 1650000,
-              "image": "https://example.com/steak.jpg"
+              "image": "/Ribeye-Steak.png"
             },
             {
               "id": "item_margherita",
@@ -157,7 +157,7 @@
                 "fa": "پاستا آلفردو با مرغ."
               },
               "price": 980000,
-              "image": "https://example.com/alfredo.jpg"
+              "image": "/Chicken-Alfredo.png"
             },
             {
               "id": "item_burger",
@@ -167,7 +167,7 @@
                 "fa": "برگر گوشت همراه با سیب‌زمینی."
               },
               "price": 760000,
-              "image": "https://example.com/burger.jpg"
+              "image": "/Classic-Burger.png"
             },
             {
               "id": "item_salmon",
@@ -177,7 +177,7 @@
                 "fa": "سالمون گریل با سبزیجات و برنج."
               },
               "price": 1400000,
-              "image": "https://example.com/salmon.jpg"
+              "image": "/salmon.png"
             },
             {
               "id": "item_vegan",
@@ -187,7 +187,7 @@
                 "fa": "بول گیاهی با سبزیجات."
               },
               "price": 890000,
-              "image": "https://example.com/veganbowl.jpg"
+              "image": "/Vegan_Bowl.png"
             }
           ]
         },
@@ -213,7 +213,7 @@
                 "fa": "اسپرسوی سرد با شیر."
               },
               "price": 260000,
-              "image": "https://example.com/icedlatte.jpg"
+              "image": "/Iced-Latte.png"
             },
             {
               "id": "item_orange",
@@ -223,7 +223,7 @@
                 "fa": "آب پرتقال تازه طبیعی."
               },
               "price": 240000,
-              "image": "https://example.com/orange.jpg"
+              "image": "/Fresh_Orange.png"
             },
             {
               "id": "item_mojito",
@@ -233,7 +233,7 @@
                 "fa": "نوشیدنی خنک نعناع و لیمو."
               },
               "price": 230000,
-              "image": "https://example.com/mojito.jpg"
+              "image": "/Virgin-Mojito.png"
             },
             {
               "id": "item_tea",
@@ -243,7 +243,7 @@
                 "fa": "چای گرم ایرانی."
               },
               "price": 90000,
-              "image": "https://example.com/tea.jpg"
+              "image": "/black-tea.png"
             }
           ]
         }
