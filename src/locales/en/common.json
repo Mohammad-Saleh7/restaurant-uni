@@ -1,0 +1,39 @@
+{
+  "navbar": {
+    "home": "Home",
+    "menu": "Menu",
+    "about": "About Us",
+    "contact": "Contact",
+    "setting": "setting",
+    "en": "English",
+    "fa": "Persian"
+  },
+  "hero": {
+    "title": "Cyrus The Great",
+    "subtitle": "A modern casual restaurant",
+    "subtitle2": "serving international cuisine",
+    "viewMenu": "View Menu"
+  },
+  "about": {
+    "title": "About Us",
+    "text": "A modern casual restaurant offering a variety of",
+    "text2": "international dishes in a warm and inviting atmosphere",
+    "learnMore": "Learn More"
+  },
+  "popular": {
+    "title": "Popular Dishes",
+    "dish1": "Margherita Pizza",
+    "dish2": "Classic Caesar Salad",
+    "dish3": "Americano"
+  },
+  "categories": {
+    "title": "Categories",
+    "appetizers": "Appetizers",
+    "salads": "Salads",
+    "main": "Main Courses",
+    "drinks": "Drinks"
+  },
+  "footer": {
+    "rights": "© 2025 Aurora Bistro. All rights reserved."
+  }
+}

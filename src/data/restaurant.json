@@ -1,0 +1,253 @@
+{
+  "restaurant": {
+    "id": "rest_001",
+    "name": {
+      "en": "Aurora Bistro",
+      "fa": "رستوران آئورا"
+    },
+    "description": {
+      "en": "A modern casual restaurant serving international cuisine.",
+      "fa": "یک رستوران مدرن با غذاهای بین‌المللی."
+    },
+    "image": "https://example.com/restaurant.jpg",
+    "currency": "IRR",
+    "menu": {
+      "categories": [
+        {
+          "id": "cat_appetizers",
+          "name": { "en": "Appetizers", "fa": "پیش‌غذاها" },
+          "items": [
+            {
+              "id": "item_bruschetta",
+              "name": {
+                "en": "Tomato Basil Bruschetta",
+                "fa": "بروشتای گوجه و ریحان"
+              },
+              "description": {
+                "en": "Grilled bread topped with tomatoes and basil.",
+                "fa": "نان تست شده با گوجه و ریحان تازه."
+              },
+              "price": 420000,
+              "image": "https://example.com/bruschetta.jpg"
+            },
+            {
+              "id": "item_calamari",
+              "name": {
+                "en": "Crispy Fried Calamari",
+                "fa": "کالاماری سوخاری"
+              },
+              "description": {
+                "en": "Golden fried calamari with lemon.",
+                "fa": "کالاماری سوخاری طلایی با لیمو تازه."
+              },
+              "price": 650000,
+              "image": "https://example.com/calamari.jpg"
+            },
+            {
+              "id": "item_soup",
+              "name": { "en": "Soup of the Day", "fa": "سوپ روز" },
+              "description": {
+                "en": "Chef's special soup with bread.",
+                "fa": "سوپ مخصوص سرآشپز به همراه نان."
+              },
+              "price": 380000,
+              "image": "https://example.com/soup.jpg"
+            },
+            {
+              "id": "item_hummus",
+              "name": { "en": "Classic Hummus", "fa": "حمص کلاسیک" },
+              "description": {
+                "en": "Smooth hummus with olive oil.",
+                "fa": "حمص نرم با روغن زیتون."
+              },
+              "price": 310000,
+              "image": "https://example.com/hummus.jpg"
+            },
+            {
+              "id": "item_falafel",
+              "name": { "en": "Falafel Bites", "fa": "فلافل لقمه‌ای" },
+              "description": {
+                "en": "Mini crispy falafel with tahini.",
+                "fa": "فلافل ترد کوچک با سس ارده."
+              },
+              "price": 290000,
+              "image": "https://example.com/falafel.jpg"
+            }
+          ]
+        },
+        {
+          "id": "cat_salads",
+          "name": { "en": "Salads", "fa": "سالادها" },
+          "items": [
+            {
+              "id": "item_caesar",
+              "name": { "en": "Caesar Salad", "fa": "سالاد سزار" },
+              "description": {
+                "en": "Romaine lettuce with Caesar dressing.",
+                "fa": "کاهوی رومی با سس سزار."
+              },
+              "price": 520000,
+              "image": "/caesar-salad.png"
+            },
+            {
+              "id": "item_medit",
+              "name": {
+                "en": "Mediterranean Salad",
+                "fa": "سالاد مدیترانه‌ای"
+              },
+              "description": {
+                "en": "Greens, olives, and feta cheese.",
+                "fa": "کاهو، زیتون و پنیر فتا."
+              },
+              "price": 560000,
+              "image": "https://example.com/mediterranean.jpg"
+            },
+            {
+              "id": "item_greek",
+              "name": { "en": "Greek Salad", "fa": "سالاد یونانی" },
+              "description": {
+                "en": "Fresh veggies with feta cheese.",
+                "fa": "سبزیجات تازه با پنیر فتا."
+              },
+              "price": 530000,
+              "image": "https://example.com/greek.jpg"
+            },
+            {
+              "id": "item_quinoa",
+              "name": { "en": "Quinoa Bowl", "fa": "بول کینوا" },
+              "description": {
+                "en": "Quinoa, vegetables, and lemon dressing.",
+                "fa": "کینوا با سبزیجات و سس لیمو."
+              },
+              "price": 610000,
+              "image": "https://example.com/quinoa.jpg"
+            }
+          ]
+        },
+        {
+          "id": "cat_main",
+          "name": { "en": "Main Courses", "fa": "غذاهای اصلی" },
+          "items": [
+            {
+              "id": "item_steak",
+              "name": { "en": "Ribeye Steak", "fa": "استیک ریب‌آی" },
+              "description": {
+                "en": "Grilled ribeye with potatoes.",
+                "fa": "استیک ریب‌آی گریل‌شده با سیب‌زمینی."
+              },
+              "price": 1650000,
+              "image": "https://example.com/steak.jpg"
+            },
+            {
+              "id": "item_margherita",
+              "name": { "en": "Margherita Pizza", "fa": "پیتزا مارگاریتا" },
+              "description": {
+                "en": "A classic Neapolitan pizza topped with fresh tomatoes, mozzarella, and basil.",
+                "fa": "پیتزای کلاسیک ناپلی با گوجه تازه، موزارلا و برگ‌های ریحان."
+              },
+              "price": 750000,
+              "image": "/pizza-margherita.png"
+            },
+
+            {
+              "id": "item_alfredo",
+              "name": { "en": "Chicken Alfredo", "fa": "چیکن آلفردو" },
+              "description": {
+                "en": "Creamy Alfredo pasta with chicken.",
+                "fa": "پاستا آلفردو با مرغ."
+              },
+              "price": 980000,
+              "image": "https://example.com/alfredo.jpg"
+            },
+            {
+              "id": "item_burger",
+              "name": { "en": "Classic Burger", "fa": "برگر کلاسیک" },
+              "description": {
+                "en": "Beef patty with fries.",
+                "fa": "برگر گوشت همراه با سیب‌زمینی."
+              },
+              "price": 760000,
+              "image": "https://example.com/burger.jpg"
+            },
+            {
+              "id": "item_salmon",
+              "name": { "en": "Grilled Salmon", "fa": "سالمون گریل" },
+              "description": {
+                "en": "Salmon with herbs and rice.",
+                "fa": "سالمون گریل با سبزیجات و برنج."
+              },
+              "price": 1400000,
+              "image": "https://example.com/salmon.jpg"
+            },
+            {
+              "id": "item_vegan",
+              "name": { "en": "Vegan Bowl", "fa": "بول وگان" },
+              "description": {
+                "en": "Plant-based bowl with veggies.",
+                "fa": "بول گیاهی با سبزیجات."
+              },
+              "price": 890000,
+              "image": "https://example.com/veganbowl.jpg"
+            }
+          ]
+        },
+        {
+          "id": "cat_drinks",
+          "name": { "en": "Drinks", "fa": "نوشیدنی‌ها" },
+          "items": [
+            {
+              "id": "item_espresso",
+              "name": { "en": "Espresso", "fa": "اسپرسو" },
+              "description": {
+                "en": "Rich single-shot espresso.",
+                "fa": "اسپرسوی غلیظ تک‌شات."
+              },
+              "price": 180000,
+              "image": "/americano.png"
+            },
+            {
+              "id": "item_latte",
+              "name": { "en": "Iced Latte", "fa": "آیس لاته" },
+              "description": {
+                "en": "Cold espresso with milk.",
+                "fa": "اسپرسوی سرد با شیر."
+              },
+              "price": 260000,
+              "image": "https://example.com/icedlatte.jpg"
+            },
+            {
+              "id": "item_orange",
+              "name": { "en": "Fresh Orange Juice", "fa": "آب پرتقال طبیعی" },
+              "description": {
+                "en": "Freshly squeezed orange juice.",
+                "fa": "آب پرتقال تازه طبیعی."
+              },
+              "price": 240000,
+              "image": "https://example.com/orange.jpg"
+            },
+            {
+              "id": "item_mojito",
+              "name": { "en": "Virgin Mojito", "fa": "موهیتو" },
+              "description": {
+                "en": "Mint and lime refreshing drink.",
+                "fa": "نوشیدنی خنک نعناع و لیمو."
+              },
+              "price": 230000,
+              "image": "https://example.com/mojito.jpg"
+            },
+            {
+              "id": "item_tea",
+              "name": { "en": "Black Tea", "fa": "چای سیاه" },
+              "description": {
+                "en": "Hot classic Iranian tea.",
+                "fa": "چای گرم ایرانی."
+              },
+              "price": 90000,
+              "image": "https://example.com/tea.jpg"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
