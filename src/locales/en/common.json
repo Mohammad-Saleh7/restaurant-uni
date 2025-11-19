@@ -38,5 +38,13 @@
   },
   "card": {
     "price": "Price"
+  },
+  "button": {
+    "viewDetails": "View Details",
+    "addToCart": "Add To Cart",
+    "back": "Back"
+  },
+  "similar": {
+    "title": "Similar Dishes"
   }
 }

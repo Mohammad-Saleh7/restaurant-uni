@@ -8,9 +8,19 @@ import { useTranslation } from "react-i18next";
 const categories = restaurantData.restaurant.menu.categories;
 const saladCategory = categories.find((cat) => cat.name.en === "Salads");
 
+function toPersianNumber(num: string | number) {
+  return num
+    .toString()
+    .replace(
+      /\d/g,
+      (d) => ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"][parseInt(d)]
+    );
+}
+
 const Salads: React.FC = () => {
   const { i18n } = useTranslation();
   const currentLang = i18n.language === "fa" ? "fa" : "en";
+
   if (!saladCategory) return null;
   return (
     <div>
@@ -41,12 +51,17 @@ const Salads: React.FC = () => {
             <MenuCard
               id={item.id}
               key={item.id}
-              price={`${item.price}$`}
+              price={
+                currentLang === "fa"
+                  ? `${toPersianNumber(item.price)} ریال`
+                  : `${item.price} Rial`
+              }
               image={item.image}
               descriptionEn={item.description.en}
               descriptionFa={item.description.fa}
               nameEn={item.name.en}
               nameFa={item.name.fa}
+              // catName={saladCategory.name[currentLang]}
               lang={currentLang}
             />
           ))}

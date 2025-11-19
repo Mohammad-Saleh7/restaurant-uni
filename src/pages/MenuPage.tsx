@@ -13,6 +13,15 @@ const MenuPage: React.FC = () => {
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language === "fa" ? "fa" : "en";
 
+  function toPersianNumber(num: string | number) {
+    return num
+      .toString()
+      .replace(
+        /\d/g,
+        (d) => ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"][parseInt(d)]
+      );
+  }
+
   return (
     <Box>
       <HeaderMenu />
@@ -41,15 +50,20 @@ const MenuPage: React.FC = () => {
               >
                 {category.items.map((item) => (
                   <MenuCard
-                    id={item.id}
                     key={item.id}
                     nameFa={item.name.fa}
                     nameEn={item.name.en}
                     descriptionFa={item.description.fa}
                     descriptionEn={item.description.en}
-                    price={`${item.price}$`}
+                    // catName={category.name[currentLang]}
+                    price={
+                      currentLang === "fa"
+                        ? `${toPersianNumber(item.price)} ریال`
+                        : `${item.price} Rial`
+                    }
                     image={item.image}
                     lang={currentLang}
+                    id={item.id}
                   />
                 ))}
               </Box>

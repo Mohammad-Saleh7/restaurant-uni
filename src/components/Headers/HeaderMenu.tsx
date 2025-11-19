@@ -7,6 +7,7 @@ import { Box, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import SettingHeader from "../SettingHeader";
 import MenuBookOutlinedIcon from "@mui/icons-material/MenuBookOutlined";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { useNavigate } from "react-router-dom";
 
 interface Props {
@@ -85,22 +86,18 @@ export default function HeaderMenu(props: Props) {
                 {t("hero.title")}
               </Typography>
               <Box sx={{ display: "flex", gap: 2 }}>
-                {/* <Button
-                  variant="contained"
+                <KeyboardBackspaceIcon
                   sx={{
-                    border: "3px solid #fcbc4e",
-                    bgcolor: "#ae813e",
-                    textShadow: `
-      0 2px 4px rgba(0,0,0,0.4),
-      0 0 10px rgba(3, 2, 1, 0.6)
-    `,
-                    display: "flex",
-                    gap: 1,
+                    mr: 1,
+                    cursor: "pointer",
+                    border: "3px solid #67341b",
+                    color: "#67341b",
+                    borderRadius: "50%",
+                    "&:hover": { scale: 1.1, transition: "0.3s all" },
+                    fontSize: 40,
                   }}
-                >
-                  {t("hero.viewMenu")}
-                  <MenuBookOutlinedIcon />
-                </Button> */}
+                  onClick={() => window.history.back()}
+                />
                 <SettingHeader />
               </Box>
             </Box>

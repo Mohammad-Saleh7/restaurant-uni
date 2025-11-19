@@ -10,6 +10,15 @@ const mainCourseCategory = categories.find(
   (cat) => cat.name.en === "Main Courses"
 );
 
+function toPersianNumber(num: string | number) {
+  return num
+    .toString()
+    .replace(
+      /\d/g,
+      (d) => ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"][parseInt(d)]
+    );
+}
+
 const MainCourses: React.FC = () => {
   const { i18n } = useTranslation();
   const currentLang = i18n.language === "fa" ? "fa" : "en";
@@ -36,20 +45,24 @@ const MainCourses: React.FC = () => {
             gap: 4,
             flexWrap: "wrap",
             gridTemplateColumns: "repeat(4, minmax(250px, 1fr))",
-            mb: 5,
           }}
         >
           {mainCourseCategory.items.map((item) => (
             <MenuCard
-              id={item.id}
               key={item.id}
-              price={`${item.price}$`}
+              price={
+                currentLang === "fa"
+                  ? `${toPersianNumber(item.price)} ریال`
+                  : `${item.price} Rial`
+              }
               image={item.image}
               descriptionEn={item.description.en}
               descriptionFa={item.description.fa}
               nameEn={item.name.en}
               nameFa={item.name.fa}
+              // catName={mainCourseCategory.name[currentLang]}
               lang={currentLang}
+              id={item.id}
             />
           ))}
         </Box>

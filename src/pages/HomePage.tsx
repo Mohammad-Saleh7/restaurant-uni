@@ -98,6 +98,7 @@ const HomePage: React.FC = () => {
         >
           {popularDishes.map((item) => (
             <CardComp
+              id={item.id}
               key={item.id}
               image={item.image}
               titleEn={item.name.en}

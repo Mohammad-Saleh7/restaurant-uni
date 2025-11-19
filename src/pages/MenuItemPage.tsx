@@ -40,6 +40,15 @@ const MenuItemPage: React.FC = () => {
     ? category.items.filter((it) => it.id !== item.id).slice(0, 4)
     : [];
 
+  function toPersianNumber(num: string | number) {
+    return num
+      .toString()
+      .replace(
+        /\d/g,
+        (d) => ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"][parseInt(d)]
+      );
+  }
+
   return (
     <Box>
       <HeaderMenu />
@@ -68,7 +77,7 @@ const MenuItemPage: React.FC = () => {
             <Typography
               variant="h5"
               component={"h5"}
-              sx={{ fontWeight: "bold", fontSize: 30 }}
+              sx={{ fontWeight: "bold", fontSize: 30, color: "#67341b" }}
             >
               {item.description[currentLang]}
             </Typography>
@@ -84,15 +93,17 @@ const MenuItemPage: React.FC = () => {
             >
               {item.description[currentLang]}
             </Typography>
-            <Typography variant="body2" sx={{ fontSize: 20 }}>
-              {item.price}$
+            <Typography variant="body2" sx={{ fontSize: 20, color: "#67341b" }}>
+              {currentLang === "fa"
+                ? `${toPersianNumber(item.price)} ریال`
+                : `${item.price} Rial`}
             </Typography>
             <Box sx={{ display: "flex", gap: 2 }}>
               <Button
                 variant="contained"
                 sx={{ width: "fit-content", bgcolor: "#51b6a1" }}
               >
-                <Typography>Add To Cart</Typography>
+                <Typography>{t("button.addToCart")}</Typography>
               </Button>
               <Button
                 variant="outlined"
@@ -100,15 +111,19 @@ const MenuItemPage: React.FC = () => {
                 sx={{ width: "fit-content" }}
                 onClick={() => window.history.back()}
               >
-                <Typography>Back</Typography>
+                <Typography>{t("button.back")}</Typography>
               </Button>
             </Box>
           </Box>
         </Box>
         <Divider />
         <Box sx={{ mt: 4, mb: 4 }}>
-          <Typography variant="h5" component={"h5"} sx={{ fontWeight: "bold" }}>
-            similar items
+          <Typography
+            variant="h5"
+            component={"h5"}
+            sx={{ fontWeight: "bold", color: "#67341b" }}
+          >
+            {t("similar.title")}
           </Typography>
           <Box
             sx={{
@@ -124,10 +139,15 @@ const MenuItemPage: React.FC = () => {
                 nameEn={similar.name.en}
                 descriptionFa={similar.description.fa}
                 descriptionEn={similar.description.en}
-                price={`${similar.price}$`}
+                price={
+                  currentLang === "fa"
+                    ? `${toPersianNumber(similar.price)} ریال`
+                    : `${similar.price} Rial`
+                }
                 image={similar.image}
                 lang={currentLang}
                 id={similar.id}
+                // catName={category ? category.name[currentLang] : ""}
               />
             ))}
           </Box>

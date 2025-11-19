@@ -78,13 +78,23 @@ export default function MenuCard({
             {t("card.price")}:{price}{" "}
           </Typography>
         </CardContent>
-        <CardActions sx={{ bgcolor: "#e2c58a", mt: "auto" }}>
+        <CardActions
+          sx={{
+            bgcolor: "#e2c58a",
+            mt: "auto",
+            display: "flex",
+            gap: 1,
+          }}
+        >
           <Button
-            variant="text"
+            variant="outlined"
             sx={{
-              width: "fit-content",
+              width: "120px",
               display: "flex",
               justifyContent: "center",
+              whiteSpace: "nowrap",
+              borderColor: "#67341b",
+              height: "36px",
             }}
           >
             <Link
@@ -94,10 +104,26 @@ export default function MenuCard({
                 display: "block",
                 color: "#67341b",
                 fontWeight: "bold",
+                fontSize: 13,
               }}
             >
-              view details
+              {t("button.viewDetails")}
             </Link>
+          </Button>
+          <Button
+            variant="contained"
+            sx={{
+              width: "120px",
+              // color: "black",
+              whiteSpace: "nowrap",
+              borderColor: "black",
+              height: "36px",
+              bgcolor: "#51b6a1",
+            }}
+          >
+            <Typography sx={{ fontWeight: "bold", fontSize: 13 }}>
+              {t("button.addToCart")}
+            </Typography>
           </Button>
         </CardActions>
       </Card>
