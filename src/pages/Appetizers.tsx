@@ -38,6 +38,7 @@ const Appetizers: React.FC = () => {
         >
           {appet.items.map((item) => (
             <MenuCard
+              id={item.id}
               key={item.id}
               price={`${item.price}$`}
               image={item.image}

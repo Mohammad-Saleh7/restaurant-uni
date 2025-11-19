@@ -39,6 +39,7 @@ const Salads: React.FC = () => {
         >
           {saladCategory.items.map((item) => (
             <MenuCard
+              id={item.id}
               key={item.id}
               price={`${item.price}$`}
               image={item.image}

@@ -40,6 +40,7 @@ const Drinks: React.FC = () => {
           >
             {drinkCategory.items.map((item) => (
               <MenuCard
+                id={item.id}
                 key={item.id}
                 price={`${item.price}$`}
                 image={item.image}

@@ -41,6 +41,7 @@ const MainCourses: React.FC = () => {
         >
           {mainCourseCategory.items.map((item) => (
             <MenuCard
+              id={item.id}
               key={item.id}
               price={`${item.price}$`}
               image={item.image}

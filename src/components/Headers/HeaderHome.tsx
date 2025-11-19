@@ -62,6 +62,7 @@ export default function HeaderHome(props: Props) {
               }}
             >
               <Typography
+                onClick={() => navigate("/")}
                 variant="h1"
                 component={"h1"}
                 color="#fcbc4e"
@@ -73,6 +74,11 @@ export default function HeaderHome(props: Props) {
       0 2px 4px rgba(0,0,0,0.4),
       0 0 10px rgba(212,175,55,0.6)
     `,
+                  cursor: "pointer",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                    transition: "transform 0.3s",
+                  },
                 }}
               >
                 {t("hero.title")}

@@ -4,6 +4,7 @@ import HeaderMenu from "../components/Headers/HeaderMenu";
 import restaurantData from "../data/restaurant.json";
 import MenuCard from "../components/Cards/MenuCard";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 const MenuPage: React.FC = () => {
   const categories = restaurantData.restaurant.menu.categories;
@@ -40,6 +41,7 @@ const MenuPage: React.FC = () => {
               >
                 {category.items.map((item) => (
                   <MenuCard
+                    id={item.id}
                     key={item.id}
                     nameFa={item.name.fa}
                     nameEn={item.name.en}

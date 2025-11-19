@@ -2,8 +2,9 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Box } from "@mui/material";
+import { Box, Button, CardActionArea, CardActions } from "@mui/material";
 import { t } from "i18next";
+import { Link } from "react-router-dom";
 
 export default function MenuCard({
   price,
@@ -14,6 +15,7 @@ export default function MenuCard({
   lang,
   nameFa,
   nameEn,
+  id,
 }: {
   price: string;
   catName: string;
@@ -22,6 +24,7 @@ export default function MenuCard({
   descriptionFa: string;
   descriptionEn: string;
   image: string;
+  id: string;
   lang: "en" | "fa";
 }) {
   return (
@@ -40,9 +43,9 @@ export default function MenuCard({
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: 2,
+            gap: 1,
             bgcolor: "#e2c58a",
-            height: "150px",
+            height: "100px",
             color: "#67341b",
           }}
         >
@@ -75,6 +78,28 @@ export default function MenuCard({
             {t("card.price")}:{price}{" "}
           </Typography>
         </CardContent>
+        <CardActions sx={{ bgcolor: "#e2c58a", mt: "auto" }}>
+          <Button
+            variant="text"
+            sx={{
+              width: "fit-content",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <Link
+              to={`/menu/${id}`}
+              style={{
+                textDecoration: "none",
+                display: "block",
+                color: "#67341b",
+                fontWeight: "bold",
+              }}
+            >
+              view details
+            </Link>
+          </Button>
+        </CardActions>
       </Card>
     </Box>
   );

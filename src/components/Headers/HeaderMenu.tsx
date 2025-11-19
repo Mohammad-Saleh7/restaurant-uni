@@ -7,6 +7,7 @@ import { Box, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import SettingHeader from "../SettingHeader";
 import MenuBookOutlinedIcon from "@mui/icons-material/MenuBookOutlined";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   window?: () => Window;
@@ -30,6 +31,7 @@ function ElevationScroll(props: Props) {
 }
 
 export default function HeaderMenu(props: Props) {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   return (
     <React.Fragment>
@@ -61,6 +63,7 @@ export default function HeaderMenu(props: Props) {
               }}
             >
               <Typography
+                onClick={() => navigate("/")}
                 variant="h1"
                 component={"h1"}
                 color="#fcbc4e"
@@ -72,6 +75,11 @@ export default function HeaderMenu(props: Props) {
       0 2px 4px rgba(0,0,0,0.4),
       0 0 10px rgba(212,175,55,0.6)
     `,
+                  cursor: "pointer",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                    transition: "transform 0.3s",
+                  },
                 }}
               >
                 {t("hero.title")}

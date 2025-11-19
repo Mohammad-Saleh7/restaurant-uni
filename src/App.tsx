@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "../src/pages/HomePage";
 // import Footer from "./components/Footer";
 import MenuPage from "./pages/MenuPage";
@@ -7,6 +7,7 @@ import Salads from "./pages/Salads";
 import MainCourses from "./pages/MainCourses";
 import Drinks from "./pages/Drinks";
 import Footer from "./components/Footer";
+import MenuItemPage from "./pages/MenuItemPage";
 const App: React.FC = () => {
   return (
     <div>
@@ -14,6 +15,8 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/menu" element={<MenuPage />} />
+          <Route path="/menu/:id" element={<MenuItemPage />} />
+          {/* category routes */}
           <Route path="/appetizers" element={<Appetizers />} />
           <Route path="/salads" element={<Salads />} />
           <Route path="/maincourses" element={<MainCourses />} />
