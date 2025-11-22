@@ -1,5 +1,3 @@
-// MenuPage.tsx
-
 import { Box, Container, Divider, Typography } from "@mui/material";
 import React from "react";
 import HeaderMenu from "../components/Headers/HeaderMenu";

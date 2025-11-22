@@ -33,9 +33,6 @@ const toPersianNumber = (num: string | number) =>
       (d) => ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"][parseInt(d)]
     );
 
-// ----------------------
-// 🔍 تابع نرمال‌سازی و سرچ
-// ----------------------
 const normalizeText = (text: string) =>
   text
     .toString()

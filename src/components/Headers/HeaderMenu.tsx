@@ -1,5 +1,3 @@
-// HeaderMenu.tsx
-
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
@@ -12,14 +10,10 @@ import Badge from "@mui/material/Badge";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import MoreIcon from "@mui/icons-material/MoreVert";
 import { t } from "i18next";
 import { Link, useNavigate } from "react-router-dom";
 import SettingHeader from "../settings/SettingHeader";
 
-// Redux
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/store";
 import { setSearch } from "../../redux/searchSlice";
@@ -66,14 +60,11 @@ export default function HeaderMenu() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Redux search
   const search = useSelector((state: RootState) => state.search.value);
 
-  // Redux cart count
   const items = useSelector((state: RootState) => state.cart.items);
   const count = items.reduce((sum, item) => sum + (item.quantity || 1), 0);
 
-  // Local states
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<HTMLElement | null>(null);
@@ -85,19 +76,6 @@ export default function HeaderMenu() {
     event: React.MouseEvent<HTMLElement>
   ): void => {
     setAnchorEl(event.currentTarget);
-  };
-
-  const handleMobileMenuClose = (): void => {
-    setMobileMoreAnchorEl(null);
-  };
-
-  const handleMenuClose = (): void => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-
-  const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>): void => {
-    setMobileMoreAnchorEl(event.currentTarget);
   };
 
   return (
@@ -122,7 +100,6 @@ export default function HeaderMenu() {
             gap: { xs: 1, sm: 2 },
           })}
         >
-          {/* Logo / Title */}
           <Typography
             variant="h6"
             noWrap
@@ -140,7 +117,6 @@ export default function HeaderMenu() {
             {t("hero.title")}
           </Typography>
 
-          {/* Search */}
           <Search
             sx={{
               display: "flex",
@@ -174,9 +150,9 @@ export default function HeaderMenu() {
               </Badge>
             </IconButton>
 
-            <IconButton onClick={handleProfileMenuOpen} color="inherit">
+            {/* <IconButton onClick={handleProfileMenuOpen} color="inherit">
               <AccountCircleOutlinedIcon sx={{ fontSize: "30px" }} />
-            </IconButton>
+            </IconButton> */}
 
             <SettingHeader />
           </Box>

@@ -2,7 +2,7 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import "./i18n";
 import App from "./App.tsx";
-import store from "./redux/store.ts"; // ← اصلاح شد
+import store from "./redux/store.ts";
 import { ThemeProvider } from "@mui/material";
 import theme from "./theme.ts";
 

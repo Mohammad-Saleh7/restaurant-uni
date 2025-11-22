@@ -22,7 +22,6 @@ interface Category {
 const HomePage: React.FC = () => {
   const categories: Category[] = restaurantData.restaurant.menu.categories;
 
-  // flatMap = همه آیتم‌های دسته‌ها رو در یک آرایه ادغام می‌کنه
   const allItems: Item[] = categories.flatMap((el) => el.items);
 
   const popularIds = ["item_margherita", "item_caesar", "item_espresso"];

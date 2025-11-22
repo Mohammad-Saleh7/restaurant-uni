@@ -1,5 +1,3 @@
-// src/components/Cards/MenuCard.tsx
-
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -12,7 +10,7 @@ import { addToCart } from "../../redux/cartSlice";
 import i18n from "../../i18n";
 
 interface MenuCardProps {
-  price: number | string; // عدد خام یا رشته (با واحد/کاما/اعداد فارسی)
+  price: number | string;
   catName?: string;
   nameFa: string;
   nameEn: string;
@@ -37,17 +35,14 @@ export default function MenuCard({
   const dispatch = useDispatch();
   const currentLang: "fa" | "en" = i18n.language === "fa" ? "fa" : "en";
 
-  // 🔹 تبدیل امن price به عدد
   function normalizePrice(raw: number | string): number {
     if (typeof raw === "number") return raw;
 
-    // تبدیل اعداد فارسی به انگلیسی
     const persianDigits = "۰۱۲۳۴۵۶۷۸۹";
     let normalized = raw.replace(/[۰-۹]/g, (d) =>
       persianDigits.indexOf(d).toString()
     );
 
-    // حذف کاما، فاصله، واحد پول و هر چیز غیرعددی
     normalized = normalized.replace(/[^\d.-]/g, "");
 
     const n = Number(normalized);
@@ -65,7 +60,6 @@ export default function MenuCard({
       );
   }
 
-  // نمایش قیمت
   const displayPrice =
     currentLang === "fa"
       ? `${toPersianNumber(priceRial.toLocaleString("fa-IR"))}`
@@ -101,7 +95,7 @@ export default function MenuCard({
           sx={{
             objectFit: "contain",
             width: "100%",
-            height: { xs: 180, sm: 200, md: 220, lg: 250 }, // ریسپانسیو ولی نزدیک طراحی اصلی
+            height: { xs: 180, sm: 200, md: 220, lg: 250 },
           }}
         />
 

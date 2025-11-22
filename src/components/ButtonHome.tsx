@@ -30,8 +30,8 @@ const ButtonHome: React.FC<Props> = ({ lang }) => {
       sx={{
         display: "flex",
         gap: 2,
-        flexWrap: "wrap", // ← ریسپانسیو
-        justifyContent: "center", // ← وسط‌چین روی موبایل
+        flexWrap: "wrap",
+        justifyContent: "center",
       }}
     >
       {buttonsName.map((el) => (
@@ -44,7 +44,7 @@ const ButtonHome: React.FC<Props> = ({ lang }) => {
               theme.palette.mode === "dark"
                 ? "background.darkPaper"
                 : "background.lightPaper",
-            width: { xs: "120px", sm: "150px" }, // ← ریسپانسیو
+            width: { xs: "120px", sm: "150px" },
             transition: "all 0.3s",
             "&:hover": {
               transform: "scale(1.2)",

@@ -35,7 +35,7 @@ const toPersianNumber = (num: string | number) =>
     );
 
 // ----------------------
-// 🔍 Search Helpers
+//  Search Helpers
 // ----------------------
 const normalizeText = (text: string) =>
   text
@@ -95,10 +95,10 @@ const Salads: React.FC = () => {
             justifyContent: "center",
             mb: 5,
             gridTemplateColumns: {
-              xs: "repeat(1, 1fr)", // موبایل
-              sm: "repeat(2, 1fr)", // تبلت کوچک
-              md: "repeat(3, 1fr)", // لپ‌تاپ
-              lg: "repeat(4, 1fr)", // دسکتاپ
+              xs: "repeat(1, 1fr)",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(3, 1fr)",
+              lg: "repeat(4, 1fr)",
             },
           }}
         >

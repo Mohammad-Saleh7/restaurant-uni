@@ -24,7 +24,6 @@ const Footer: FC = () => {
             justifyContent: "space-between",
             alignItems: "center",
 
-            // 📱 ریسپانسیو
             flexDirection: { xs: "column", sm: "row" },
             textAlign: { xs: "center", sm: "left" },
             gap: { xs: 2, sm: 0 },

@@ -25,7 +25,7 @@ export default function CardComp({
       sx={{
         maxWidth: 345,
         boxShadow: 0,
-        width: "100%", // 📱 ریسپانسیو
+        width: "100%",
       }}
     >
       <CardActionArea component={Link} to={`/menu/${id}`}>
@@ -35,8 +35,8 @@ export default function CardComp({
           alt={titleEn}
           sx={{
             width: "100%",
-            height: { xs: 220, sm: 260, md: 320, lg: 350 }, // 📱 ریسپانسیو واقعی
-            objectFit: "cover", // 🚀 جلوگیری از کشیدگی/فشردگی
+            height: { xs: 220, sm: 260, md: 320, lg: 350 },
+            objectFit: "cover",
             borderRadius: "4px",
           }}
         />
