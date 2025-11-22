@@ -1,8 +1,13 @@
-import { Box, Button } from "@mui/material";
 import React from "react";
+import { Box, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-const buttonsName = [
+interface ButtonItem {
+  en: string;
+  fa: string;
+}
+
+const buttonsName: ButtonItem[] = [
   { en: "Appetizers", fa: "پیش‌غذاها" },
   { en: "Salads", fa: "سالادها" },
   { en: "Main Courses", fa: "غذاهای اصلی" },
@@ -15,33 +20,45 @@ interface Props {
 
 const ButtonHome: React.FC<Props> = ({ lang }) => {
   const navigate = useNavigate();
+
+  const handleNavigate = (name: string) => {
+    navigate(`/${name.toLowerCase().replace(/\s+/g, "")}`);
+  };
+
   return (
-    <div>
-      <Box sx={{ display: "flex", gap: 2 }}>
-        {buttonsName.map((el) => (
-          <Button
-            onClick={() => navigate(`/${el.en.toLowerCase().replace(" ", "")}`)}
-            key={el.en}
-            variant="contained"
-            sx={{
-              border: "3px solid #fcbc4e",
-              bgcolor: "#ae813e",
-              textShadow: `
-                0 2px 4px rgba(0,0,0,0.4),
-                0 0 10px rgba(3, 2, 1, 0.6)
-              `,
-              width: 150,
-              transition: "all 0.3s",
-              "&:hover": {
-                transform: "scale(1.2)",
-              },
-            }}
-          >
-            {lang === "fa" ? el.fa : el.en}
-          </Button>
-        ))}
-      </Box>
-    </div>
+    <Box
+      sx={{
+        display: "flex",
+        gap: 2,
+        flexWrap: "wrap", // ← ریسپانسیو
+        justifyContent: "center", // ← وسط‌چین روی موبایل
+      }}
+    >
+      {buttonsName.map((el) => (
+        <Button
+          key={el.en}
+          onClick={() => handleNavigate(el.en)}
+          variant="contained"
+          sx={(theme) => ({
+            bgcolor:
+              theme.palette.mode === "dark"
+                ? "background.darkPaper"
+                : "background.lightPaper",
+            width: { xs: "120px", sm: "150px" }, // ← ریسپانسیو
+            transition: "all 0.3s",
+            "&:hover": {
+              transform: "scale(1.2)",
+            },
+            color:
+              theme.palette.mode === "dark"
+                ? "text.primary"
+                : "text.lightPrimary",
+          })}
+        >
+          {lang === "fa" ? el.fa : el.en}
+        </Button>
+      ))}
+    </Box>
   );
 };
 

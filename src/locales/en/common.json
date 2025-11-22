@@ -6,13 +6,16 @@
     "contact": "Contact",
     "setting": "setting",
     "en": "English",
-    "fa": "Persian"
+    "fa": "Persian",
+    "light": "Light",
+    "dark": "Dark"
   },
   "hero": {
     "title": "Cyrus The Great",
     "subtitle": "A modern casual restaurant",
     "subtitle2": "serving international cuisine",
-    "viewMenu": "View Menu"
+    "viewMenu": "View Menu",
+    "search": "Search..."
   },
   "about": {
     "title": "About Us",
@@ -33,9 +36,6 @@
     "main": "Main Courses",
     "drinks": "Drinks"
   },
-  "footer": {
-    "rights": "© 2025 Aurora Bistro. All rights reserved."
-  },
   "card": {
     "price": "Price"
   },
@@ -46,5 +46,21 @@
   },
   "similar": {
     "title": "Similar Dishes"
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty.",
+    "total": "Total",
+    "checkout": "Checkout",
+    "price": "Price",
+    "quantity": "Quantity",
+    "clear": "Clear Cart",
+    "buy": "Buy"
+  },
+  "footer": {
+    "title": "© Cyrus The Great. All Rights Reserved.",
+    "home": "Home",
+    "cart": "Cart",
+    "menu": "Menu"
   }
 }

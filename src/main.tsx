@@ -1,10 +1,15 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { Provider } from "react-redux";
 import "./i18n";
 import App from "./App.tsx";
+import store from "./redux/store.ts"; // ← اصلاح شد
+import { ThemeProvider } from "@mui/material";
+import theme from "./theme.ts";
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>
+  <ThemeProvider theme={theme}>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </ThemeProvider>
 );

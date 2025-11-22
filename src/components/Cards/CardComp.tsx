@@ -21,15 +21,47 @@ export default function CardComp({
   id,
 }: CardProps) {
   return (
-    <Card sx={{ maxWidth: 345, boxShadow: 0 }}>
+    <Card
+      sx={{
+        maxWidth: 345,
+        boxShadow: 0,
+        width: "100%", // 📱 ریسپانسیو
+      }}
+    >
       <CardActionArea component={Link} to={`/menu/${id}`}>
-        <CardMedia component="img" height="350" image={image} alt={titleEn} />
-        <CardContent sx={{ bgcolor: "#e2c58a", color: "#67341b" }}>
+        <CardMedia
+          component="img"
+          image={image}
+          alt={titleEn}
+          sx={{
+            width: "100%",
+            height: { xs: 220, sm: 260, md: 320, lg: 350 }, // 📱 ریسپانسیو واقعی
+            objectFit: "cover", // 🚀 جلوگیری از کشیدگی/فشردگی
+            borderRadius: "4px",
+          }}
+        />
+
+        <CardContent
+          sx={(theme) => ({
+            bgcolor:
+              theme.palette.mode === "dark"
+                ? "background.darkPaper"
+                : "background.default",
+          })}
+        >
           <Typography
             gutterBottom
             variant="h5"
             component="div"
-            sx={{ display: "flex", justifyContent: "center" }}
+            sx={(theme) => ({
+              display: "flex",
+              justifyContent: "center",
+              color:
+                theme.palette.mode === "dark"
+                  ? "text.primary"
+                  : "text.lightPrimary",
+              textAlign: "center",
+            })}
           >
             {lang === "fa" ? titleFa : titleEn}
           </Typography>

@@ -6,17 +6,27 @@ import restaurantData from "../data/restaurant.json";
 import ButtonHome from "../components/ButtonHome";
 import { useTranslation } from "react-i18next";
 
-const HomePage: React.FC = () => {
-  const categories = restaurantData.restaurant.menu.categories;
+// ---- Types ----
+interface Item {
+  id: string;
+  name: { fa: string; en: string };
+  image: string;
+}
 
-  //what is flatMap?????
-  const allItems = categories.flatMap((el) => el.items);
+interface Category {
+  id: string;
+  name: { fa: string; en: string };
+  items: Item[];
+}
+
+const HomePage: React.FC = () => {
+  const categories: Category[] = restaurantData.restaurant.menu.categories;
+
+  // flatMap = همه آیتم‌های دسته‌ها رو در یک آرایه ادغام می‌کنه
+  const allItems: Item[] = categories.flatMap((el) => el.items);
 
   const popularIds = ["item_margherita", "item_caesar", "item_espresso"];
-
-  const popularDishes = allItems.filter((items) =>
-    popularIds.includes(items.id)
-  );
+  const popularDishes = allItems.filter((item) => popularIds.includes(item.id));
 
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language === "fa" ? "fa" : "en";
@@ -24,82 +34,102 @@ const HomePage: React.FC = () => {
   return (
     <Box>
       <HeaderHome />
+
       <Container
         maxWidth="lg"
         sx={{
-          px: { xs: 1, sm: 2, md: 4 },
+          px: { xs: 1.5, sm: 2, md: 4 },
         }}
       >
+        {/* --- ABOUT SECTION --- */}
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center",
             alignItems: "center",
             gap: { xs: 2, sm: 3, md: 4 },
-            marginBottom: { xs: "40px", md: "80px" },
+            mb: { xs: 4, md: 8 },
+            mt: 2,
           }}
         >
           <Typography
             variant="h2"
-            component={"h2"}
-            color="#67341b"
-            fontSize={{ xs: 28, sm: 36, md: 48 }}
+            fontSize={{ xs: 26, sm: 32, md: 42 }}
             textAlign="center"
+            sx={(theme) => ({
+              color:
+                theme.palette.mode === "dark"
+                  ? "text.primary"
+                  : "text.lightPrimary",
+            })}
           >
             {t("about.title")}
           </Typography>
+
           <Box
             sx={{
               display: "flex",
               flexDirection: "column",
-              justifyContent: "center",
               alignItems: "center",
-              gap: { xs: 1, sm: 2 },
+              gap: { xs: 1.5, sm: 2 },
               width: { xs: "100%", sm: "80%", md: "60%" },
             }}
           >
             <Typography
-              variant="body1"
-              component={"p"}
-              fontSize={{ xs: 16, sm: 18, md: 20 }}
-              color="#67341b"
+              fontSize={{ xs: 15, sm: 17, md: 19 }}
               textAlign="center"
+              sx={(theme) => ({
+                color:
+                  theme.palette.mode === "dark"
+                    ? "text.primary"
+                    : "text.lightPrimary",
+              })}
             >
               {t("about.text")}
             </Typography>
+
             <Typography
-              variant="body1"
-              component={"p"}
-              fontSize={{ xs: 16, sm: 18, md: 20 }}
-              color="#67341b"
+              fontSize={{ xs: 15, sm: 17, md: 19 }}
               textAlign="center"
+              sx={(theme) => ({
+                color:
+                  theme.palette.mode === "dark"
+                    ? "text.primary"
+                    : "text.lightPrimary",
+              })}
             >
               {t("about.text2")}
             </Typography>
           </Box>
+
           <Typography
             variant="h3"
-            component={"h3"}
-            color="#67341b"
-            fontSize={{ xs: 22, sm: 28, md: 32 }}
+            fontSize={{ xs: 20, sm: 26, md: 32 }}
             textAlign="center"
+            sx={(theme) => ({
+              color:
+                theme.palette.mode === "dark"
+                  ? "text.primary"
+                  : "text.lightPrimary",
+            })}
           >
             {t("popular.title")}
           </Typography>
         </Box>
+
+        {/* --- POPULAR ITEMS --- */}
         <Box
           sx={{
             display: "flex",
-            gap: { xs: 1, sm: 2, md: 3 },
+            gap: { xs: 1.5, sm: 2, md: 3 },
             justifyContent: "center",
             flexWrap: "wrap",
           }}
         >
           {popularDishes.map((item) => (
             <CardComp
-              id={item.id}
               key={item.id}
+              id={item.id}
               image={item.image}
               titleEn={item.name.en}
               titleFa={item.name.fa}
@@ -107,6 +137,8 @@ const HomePage: React.FC = () => {
             />
           ))}
         </Box>
+
+        {/* --- CATEGORIES SECTION --- */}
         <Box
           sx={{
             display: "flex",
@@ -116,20 +148,24 @@ const HomePage: React.FC = () => {
           }}
         >
           <Typography
-            sx={{ display: "flex", justifyContent: "center" }}
             variant="h3"
-            component={"h3"}
-            color="#67341b"
             fontSize={{ xs: 20, sm: 24, md: 28 }}
             textAlign="center"
+            sx={(theme) => ({
+              color:
+                theme.palette.mode === "dark"
+                  ? "text.primary"
+                  : "text.lightPrimary",
+            })}
           >
             {t("categories.title")}
           </Typography>
+
           <Box
             sx={{
               display: "flex",
               justifyContent: "center",
-              mb: { xs: 4, md: 10 },
+              mb: { xs: 4, md: 8 },
             }}
           >
             <ButtonHome lang={currentLang} />
