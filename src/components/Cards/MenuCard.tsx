@@ -69,9 +69,8 @@ export default function MenuCard({
   const displayPrice =
     currentLang === "fa"
       ? `${toPersianNumber(priceRial.toLocaleString("fa-IR"))}`
-      : `${(priceRial / 60000).toFixed(1)} $`;
+      : priceRial.toLocaleString("en-US");
 
-  // اضافه کردن به سبد
   const handleAddToCart = () => {
     dispatch(
       addToCart({
@@ -91,7 +90,7 @@ export default function MenuCard({
       <Card
         sx={{
           width: "100%",
-          maxWidth: 250, // همون اندازه قبلی، فقط ریسپانسیو
+          maxWidth: 250,
           height: "100%",
         }}
       >
