@@ -64,7 +64,12 @@ const MenuPage: React.FC = () => {
       <Container maxWidth="lg">
         {categories.map((category) => (
           <Box key={category.id} sx={{ mb: 6 }}>
-            <Divider />
+            {category.id !== categories[0].id && (
+              <Divider
+                sx={{ my: 4, borderColor: "divider" }}
+                variant="fullWidth"
+              />
+            )}
 
             <Typography
               variant="h4"
