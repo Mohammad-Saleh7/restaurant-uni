@@ -3,166 +3,293 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
-import { Box, Button, Typography, useTheme } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Stack,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import MenuBookOutlinedIcon from "@mui/icons-material/MenuBookOutlined";
+import LoginRoundedIcon from "@mui/icons-material/LoginRounded";
+import PersonAddAltRoundedIcon from "@mui/icons-material/PersonAddAltRounded";
+import RestaurantMenuRoundedIcon from "@mui/icons-material/RestaurantMenuRounded";
 import { useNavigate } from "react-router-dom";
 import { t } from "i18next";
 import SettingHome from "../settings/SettingsHome";
 
-interface Props {
-  window?: () => Window;
-  children?: React.ReactElement<{ elevation?: number }>;
-}
-
-function ElevationScroll(props: Props): React.ReactElement | null {
+function ElevationScroll(props) {
   const { children, window: windowProp } = props;
-
   const trigger = useScrollTrigger({
     disableHysteresis: true,
-    threshold: 0,
+    threshold: 8,
     target: windowProp ? windowProp() : undefined,
   });
 
   if (!children) return null;
 
   return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0,
+    sx: {
+      ...(children.props.sx || {}),
+      transform: trigger ? "translateY(0)" : "translateY(0)",
+    },
   });
 }
 
-export default function HeaderHome(props: Props): React.ReactElement {
+export default function HeaderHome(props) {
   const navigate = useNavigate();
   const theme = useTheme();
+
+  const bg =
+    theme.palette.mode === "dark" ? "/nav-home-dark.png" : "/nav-home.png";
 
   return (
     <React.Fragment>
       <CssBaseline />
+
+      {/* ✅ Navbar Glass (Sticky) */}
       <ElevationScroll {...props}>
         <AppBar
+          position="sticky"
           sx={{
-            backgroundImage:
-              theme.palette.mode === "dark"
-                ? "url(/nav-home-dark.png)"
-                : "url(/nav-home.png)",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            height: { xs: "100vh", sm: "650px", md: "700px" },
-            position: "static",
-            boxShadow:
-              "rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px",
+            bgcolor: "rgba(10,14,24,0.35)",
+            backdropFilter: "blur(10px)",
+            borderBottom: "1px solid rgba(255,255,255,0.12)",
           }}
         >
-          <Toolbar>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: { xs: "100vh", sm: "100%", md: "100vh" },
-                width: "100%",
-                flexDirection: "column",
-                gap: { xs: 3, sm: 4, md: 5 },
-                px: { xs: 2, sm: 3, md: 0 },
-                textAlign: "center",
-              }}
-            >
-              <Typography
+          <Container maxWidth="lg">
+            <Toolbar sx={{ px: { xs: 0, sm: 0 }, minHeight: 74 }}>
+              <Box
                 onClick={() => navigate("/")}
-                variant="h1"
-                component="h1"
-                px={2}
-                sx={(theme) => ({
-                  WebkitTextStroke: "1px #000",
-                  textShadow:
-                    theme.palette.mode === "dark"
-                      ? `
-      0 2px 4px rgba(0,0,0,0.4),
-      0 0 10px rgba(26, 34, 149, 0.6)
-    `
-                      : `
-      0 2px 4px rgba(0,0,0,0.4),
-      0 0 10px rgba(176, 142, 31, 0.83)
-    `,
+                sx={{
                   cursor: "pointer",
-                  color:
-                    theme.palette.mode === "dark"
-                      ? theme.palette.text.primary
-                      : "#fcbc4e",
-                  fontSize: { xs: "2.4rem", sm: "3.2rem", md: "4rem" },
-                  "&:hover": {
-                    backgroundColor: "transparent !important",
-                    transition: "0.5s ease",
-                    scale: "1.1",
-                  },
-                })}
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1,
+                  userSelect: "none",
+                }}
               >
-                {t("hero.title")}
-              </Typography>
-
-              <Box>
-                <Typography
-                  variant="h4"
-                  component="h4"
+                <Box
                   sx={{
-                    textShadow: `
-      0 2px 4px rgba(0,0,0,0.4),
-      0 0 10px rgba(3, 2, 1, 0.6)
-    `,
-                    fontSize: { xs: "1.3rem", sm: "1.6rem", md: "2rem" },
+                    width: 40,
+                    height: 40,
+                    borderRadius: 2.5,
+                    background:
+                      "linear-gradient(135deg, rgba(34,197,94,0.9), rgba(79,70,229,0.9))",
+                    display: "grid",
+                    placeItems: "center",
+                    boxShadow: "0 12px 25px rgba(0,0,0,0.25)",
+                    border: "1px solid rgba(255,255,255,0.22)",
                   }}
                 >
-                  {t("hero.subtitle")}
-                </Typography>
+                  <RestaurantMenuRoundedIcon sx={{ color: "#fff" }} />
+                </Box>
 
                 <Typography
-                  variant="h4"
-                  component="h4"
                   sx={{
-                    textShadow: `
-      0 2px 4px rgba(0,0,0,0.4),
-      0 0 10px rgba(3, 2, 1, 0.6)
-    `,
-                    fontSize: { xs: "1.3rem", sm: "1.6rem", md: "2rem" },
+                    fontWeight: 900,
+                    letterSpacing: 0.3,
+                    color: "#fff",
+                    fontSize: { xs: 18, sm: 20 },
                   }}
                 >
-                  {t("hero.subtitle2")}
+                  Restaurant Uni
                 </Typography>
               </Box>
 
-              {/* دکمه‌ها */}
-              <Box sx={{ display: "flex", gap: 2 }}>
+              <Box sx={{ flex: 1 }} />
+
+              <Stack direction="row" spacing={1} alignItems="center">
                 <Button
                   variant="text"
                   onClick={() => navigate("/menu")}
-                  sx={{
-                    color: "white",
-                    textShadow: `
-      0 2px 4px rgba(0,0,0,0.4),
-      0 0 10px rgba(3, 2, 1, 0.6)
-    `,
-                    display: "flex",
-                    gap: 1,
-                    fontSize: "1.1rem",
-                    "&:hover": {
-                      backgroundColor: "transparent !important",
-                      transition: "0.3s ease",
-                    },
-                    "&.Mui-focusVisible": {
-                      backgroundColor: "transparent !important",
-                    },
-                  }}
+                  startIcon={<MenuBookOutlinedIcon />}
+                  sx={navTextBtnSX}
                 >
                   {t("hero.viewMenu")}
-                  <MenuBookOutlinedIcon />
                 </Button>
 
                 <SettingHome />
-              </Box>
-            </Box>
-          </Toolbar>
+
+                <Button
+                  variant="outlined"
+                  onClick={() => navigate("/auth/login")}
+                  startIcon={<LoginRoundedIcon />}
+                  sx={navOutlineBtnSX}
+                >
+                  {t("login.login")}
+                </Button>
+
+                <Button
+                  variant="contained"
+                  onClick={() => navigate("/auth/signup")}
+                  startIcon={<PersonAddAltRoundedIcon />}
+                  sx={navCtaBtnSX}
+                >
+                  {t("login.signUp")}
+                </Button>
+              </Stack>
+            </Toolbar>
+          </Container>
         </AppBar>
       </ElevationScroll>
-      <Toolbar />
+
+      {/* ✅ Hero Section با بک‌گراند تصویرت */}
+      <Box
+        sx={{
+          position: "relative",
+          minHeight: { xs: "78vh", sm: 640, md: 700 },
+          backgroundImage: `url(${bg})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          overflow: "hidden",
+        }}
+      >
+        {/* overlay برای خوانایی */}
+        <Box
+          sx={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(180deg, rgba(11,16,32,0.65) 0%, rgba(11,16,32,0.55) 45%, rgba(11,16,32,0.85) 100%)",
+          }}
+        />
+
+        {/* glow */}
+        <Box
+          sx={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "radial-gradient(1000px 500px at 20% 20%, rgba(124,58,237,0.30), transparent 60%), radial-gradient(900px 500px at 80% 20%, rgba(34,197,94,0.22), transparent 60%)",
+            pointerEvents: "none",
+          }}
+        />
+
+        <Container
+          maxWidth="lg"
+          sx={{
+            position: "relative",
+            zIndex: 1,
+            minHeight: { xs: "78vh", sm: 640, md: 700 },
+            display: "grid",
+            placeItems: "center",
+            py: { xs: 6, sm: 8 },
+          }}
+        >
+          <Box sx={{ textAlign: "center", maxWidth: 860 }}>
+            <Typography
+              onClick={() => navigate("/")}
+              variant="h1"
+              sx={{
+                color: "#fff",
+                cursor: "pointer",
+                fontSize: { xs: "2.2rem", sm: "3.1rem", md: "4rem" },
+                lineHeight: 1.05,
+                textShadow: "0 14px 40px rgba(0,0,0,0.45)",
+                transition: "transform 180ms ease",
+                "&:hover": { transform: "translateY(-2px)" },
+              }}
+            >
+              {t("hero.title")}
+            </Typography>
+
+            <Typography
+              sx={{
+                mt: 2,
+                color: "rgba(255,255,255,0.78)",
+                fontSize: { xs: "1.05rem", sm: "1.2rem", md: "1.35rem" },
+              }}
+            >
+              {t("hero.subtitle")}
+            </Typography>
+
+            <Typography
+              sx={{
+                mt: 0.5,
+                color: "rgba(255,255,255,0.78)",
+                fontSize: { xs: "1.05rem", sm: "1.2rem", md: "1.35rem" },
+              }}
+            >
+              {t("hero.subtitle2")}
+            </Typography>
+
+            <Stack
+              direction={{ xs: "column", sm: "row" }}
+              spacing={1.5}
+              sx={{ mt: 4, justifyContent: "center" }}
+            >
+              <Button
+                variant="contained"
+                size="large"
+                onClick={() => navigate("/menu")}
+                startIcon={<MenuBookOutlinedIcon />}
+                sx={heroPrimaryBtnSX}
+              >
+                {t("hero.viewMenu")}
+              </Button>
+
+              <Button
+                variant="outlined"
+                size="large"
+                onClick={() => navigate("/auth/login")}
+                startIcon={<LoginRoundedIcon />}
+                sx={heroOutlineBtnSX}
+              >
+                {t("login.login")}
+              </Button>
+            </Stack>
+          </Box>
+        </Container>
+      </Box>
     </React.Fragment>
   );
 }
+
+const navTextBtnSX = {
+  color: "rgba(255,255,255,0.9)",
+  fontWeight: 900,
+  "&:hover": { bgcolor: "rgba(255,255,255,0.08)" },
+};
+
+const navOutlineBtnSX = {
+  color: "#fff",
+  borderColor: "rgba(255,255,255,0.32)",
+  "&:hover": {
+    borderColor: "rgba(255,255,255,0.65)",
+    bgcolor: "rgba(255,255,255,0.08)",
+  },
+};
+
+const navCtaBtnSX = {
+  fontWeight: 950,
+  color: "#fff",
+  background: "linear-gradient(90deg, #22c55e, #4f46e5)",
+  "&:hover": { background: "linear-gradient(90deg, #16a34a, #4338ca)" },
+};
+
+const heroPrimaryBtnSX = {
+  py: 1.25,
+  px: 2.5,
+  borderRadius: 999,
+  fontWeight: 950,
+  color: "#fff",
+  background: "linear-gradient(90deg, #22c55e, #4f46e5)",
+  boxShadow: "0 18px 50px rgba(0,0,0,0.35)",
+  "&:hover": { background: "linear-gradient(90deg, #16a34a, #4338ca)" },
+};
+
+const heroOutlineBtnSX = {
+  py: 1.25,
+  px: 2.5,
+  borderRadius: 999,
+  fontWeight: 950,
+  color: "#fff",
+  borderColor: "rgba(255,255,255,0.40)",
+  "&:hover": {
+    borderColor: "rgba(255,255,255,0.70)",
+    bgcolor: "rgba(255,255,255,0.10)",
+  },
+};

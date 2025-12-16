@@ -1,15 +1,21 @@
-import { createRoot } from "react-dom/client";
+// src/main.jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import "./i18n";
-import App from "./App.tsx";
-import store from "./redux/store.ts";
-import { ThemeProvider } from "@mui/material";
-import theme from "./theme.ts";
+import { CssBaseline } from "@mui/material";
+import { CssVarsProvider } from "@mui/material/styles";
 
-createRoot(document.getElementById("root")!).render(
-  <ThemeProvider theme={theme}>
+import App from "./App.jsx";
+import theme from "./theme.js";
+import store from "./redux/store.js"; // مسیر خودت
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <CssVarsProvider theme={theme} defaultMode="light">
+        <CssBaseline enableColorScheme />
+        <App />
+      </CssVarsProvider>
     </Provider>
-  </ThemeProvider>
+  </React.StrictMode>
 );

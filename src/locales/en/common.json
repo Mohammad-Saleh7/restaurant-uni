@@ -4,7 +4,7 @@
     "menu": "Menu",
     "about": "About Us",
     "contact": "Contact",
-    "setting": "setting",
+    "setting": "Settings",
     "en": "English",
     "fa": "Persian",
     "light": "Light",
@@ -58,9 +58,37 @@
     "buy": "Buy"
   },
   "footer": {
-    "title": "© Cyrus The Great. All Rights Reserved.",
+    "title": "© Cyrus The Great. All rights reserved.",
+    "subtitle": "Fresh taste, fast order, smooth experience.",
     "home": "Home",
     "cart": "Cart",
-    "menu": "Menu"
+    "menu": "Menu",
+    "madeBy": "Made with ❤ using React + MUI"
+  },
+  "login": {
+    "login": "Login",
+    "signUp": "Sign Up",
+    "welcome": "Welcome!",
+    "enterInputs": "Please fill in all fields.",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "emailPlaceholder": "Enter your email",
+    "passwordPlaceholder": "Enter your password",
+    "emailRequired": "Email is required.",
+    "emailInvalid": "Please enter a valid email.",
+    "passwordRequired": "Password is required.",
+    "passwordPattern": "Password must be 8+ chars with upper, lower, number and symbol.",
+    "noAccount": "Don't have an account?"
+  },
+  "signup": {
+    "title": "Sign Up",
+    "subtitle": "Create your account to get started",
+    "name": "Full Name",
+    "namePlaceholder": "Enter your full name",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordPlaceholder": "Re-enter your password",
+    "haveAccount": "Already have an account?",
+    "welcome": "Your account was created successfully!",
+    "passwordNotMatch": "Passwords do not match."
   }
 }

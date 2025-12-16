@@ -8,8 +8,12 @@ import MainCourses from "./pages/categories/MainCourses";
 import Drinks from "./pages/categories/Drinks";
 import Footer from "./components/Footer";
 import MenuItemPage from "./pages/MenuItemPage";
+
 import Cart from "./pages/Cart";
 import { Box } from "@mui/material";
+import Auth from "./pages/Auth";
+import Login from "./pages/Login";
+import Signup from "./pages/SignUp";
 const App: React.FC = () => {
   return (
     <BrowserRouter>
@@ -27,6 +31,10 @@ const App: React.FC = () => {
             <Route path="/maincourses" element={<MainCourses />} />
             <Route path="/drinks" element={<Drinks />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/auth/" element={<Auth />}>
+              <Route path="login" element={<Login />} />
+              <Route path="signup" element={<Signup />} />
+            </Route>
           </Routes>
         </Box>
 

@@ -1,5 +1,5 @@
-import { Box, Container, Divider, Typography } from "@mui/material";
 import React from "react";
+import { Box, Container, Divider, Typography } from "@mui/material";
 import HeaderMenu from "../components/Headers/HeaderMenu";
 import restaurantData from "../data/restaurant.json";
 import MenuCard from "../components/Cards/MenuCard";
@@ -46,7 +46,6 @@ const MenuPage: React.FC = () => {
 
   const matchesSearch = (item: MenuItem, query: string) => {
     if (!query) return true;
-
     const q = normalizeText(query);
 
     return (
@@ -58,13 +57,19 @@ const MenuPage: React.FC = () => {
   };
 
   return (
-    <Box>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        bgcolor: "background.default",
+        pb: { xs: 6, md: 10 },
+      }}
+    >
       <HeaderMenu />
 
-      <Container maxWidth="lg">
-        {categories.map((category) => (
+      <Container maxWidth="lg" sx={{ pt: 2 }}>
+        {categories.map((category, idx) => (
           <Box key={category.id} sx={{ mb: 6 }}>
-            {category.id !== categories[0].id && (
+            {idx !== 0 && (
               <Divider
                 sx={{ my: 4, borderColor: "divider" }}
                 variant="fullWidth"
