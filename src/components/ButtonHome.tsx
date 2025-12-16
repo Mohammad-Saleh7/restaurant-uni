@@ -57,10 +57,10 @@ const ButtonHome: React.FC<Props> = ({ lang }) => {
                 ? "linear-gradient(180deg, #435663, #313647)"
                 : "linear-gradient(180deg, #e2c58a, #cdb06f)",
 
-            border:
-              theme.palette.mode === "dark"
-                ? "1px solid rgba(255,255,255,0.12)"
-                : "1px solid rgba(103,52,27,0.25)",
+            // border:
+            //   theme.palette.mode === "dark"
+            //     ? "1px solid rgba(255,255,255,0.12)"
+            //     : "1px solid rgba(103,52,27,0.25)",
 
             boxShadow:
               theme.palette.mode === "dark"
@@ -79,7 +79,7 @@ const ButtonHome: React.FC<Props> = ({ lang }) => {
 
               background:
                 theme.palette.mode === "dark"
-                  ? "linear-gradient(180deg, #4f6370, #3a4056)"
+                  ? "linear-gradient(180deg, #4b606cff, #3a4056)"
                   : "linear-gradient(180deg, #edd08f, #d6b874)",
             },
 

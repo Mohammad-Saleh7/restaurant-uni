@@ -76,7 +76,7 @@ export default function HeaderHome(props) {
                     height: 40,
                     borderRadius: 2.5,
                     background:
-                      "linear-gradient(135deg, rgba(34,197,94,0.9), rgba(79,70,229,0.9))",
+                      "linear-gradient(135deg, rgba(7, 4, 23, 0.9), rgba(27, 22, 117, 0.9))",
                     display: "grid",
                     placeItems: "center",
                     boxShadow: "0 12px 25px rgba(0,0,0,0.25)",
@@ -94,28 +94,31 @@ export default function HeaderHome(props) {
                     fontSize: { xs: 18, sm: 20 },
                   }}
                 >
-                  Restaurant Uni
+                  {t("navbar.title")}
                 </Typography>
               </Box>
 
               <Box sx={{ flex: 1 }} />
 
               <Stack direction="row" spacing={1} alignItems="center">
-                <Button
-                  variant="text"
-                  onClick={() => navigate("/menu")}
-                  startIcon={<MenuBookOutlinedIcon />}
-                  sx={navTextBtnSX}
-                >
-                  {t("hero.viewMenu")}
-                </Button>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Button
+                    variant="text"
+                    onClick={() => navigate("/menu")}
+                    // startIcon={<MenuBookOutlinedIcon />}
+                    sx={navTextBtnSX}
+                  >
+                    {t("hero.viewMenu")}
+                  </Button>
+                  <MenuBookOutlinedIcon />
+                </Box>
 
                 <SettingHome />
 
                 <Button
                   variant="outlined"
                   onClick={() => navigate("/auth/login")}
-                  startIcon={<LoginRoundedIcon />}
+                  startIcon={<LoginRoundedIcon sx={{ ml: 1 }} />}
                   sx={navOutlineBtnSX}
                 >
                   {t("login.login")}
@@ -124,7 +127,7 @@ export default function HeaderHome(props) {
                 <Button
                   variant="contained"
                   onClick={() => navigate("/auth/signup")}
-                  startIcon={<PersonAddAltRoundedIcon />}
+                  startIcon={<PersonAddAltRoundedIcon sx={{ ml: 1 }} />}
                   sx={navCtaBtnSX}
                 >
                   {t("login.signUp")}
@@ -163,7 +166,7 @@ export default function HeaderHome(props) {
             position: "absolute",
             inset: 0,
             background:
-              "radial-gradient(1000px 500px at 20% 20%, rgba(124,58,237,0.30), transparent 60%), radial-gradient(900px 500px at 80% 20%, rgba(34,197,94,0.22), transparent 60%)",
+              "radial-gradient(1000px 500px at 20% 20%, rgba(124,58,237,0.30), transparent 60%), radial-gradient(900px 500px at 80% 20%, rgba(18, 97, 154, 0.22), transparent 60%)",
             pointerEvents: "none",
           }}
         />
@@ -225,7 +228,7 @@ export default function HeaderHome(props) {
                 variant="contained"
                 size="large"
                 onClick={() => navigate("/menu")}
-                startIcon={<MenuBookOutlinedIcon />}
+                startIcon={<MenuBookOutlinedIcon sx={{ ml: 1 }} />}
                 sx={heroPrimaryBtnSX}
               >
                 {t("hero.viewMenu")}
@@ -235,7 +238,7 @@ export default function HeaderHome(props) {
                 variant="outlined"
                 size="large"
                 onClick={() => navigate("/auth/login")}
-                startIcon={<LoginRoundedIcon />}
+                startIcon={<LoginRoundedIcon sx={{ ml: 1 }} />}
                 sx={heroOutlineBtnSX}
               >
                 {t("login.login")}
@@ -266,8 +269,12 @@ const navOutlineBtnSX = {
 const navCtaBtnSX = {
   fontWeight: 950,
   color: "#fff",
-  background: "linear-gradient(90deg, #22c55e, #4f46e5)",
-  "&:hover": { background: "linear-gradient(90deg, #16a34a, #4338ca)" },
+  background:
+    "linear-gradient(90deg,rgba(7, 4, 23, 0.9), rgba(27, 22, 117, 0.9))",
+  "&:hover": {
+    background:
+      "linear-gradient(90deg, rgba(1, 1, 5, 0.9), rgba(15, 13, 63, 0.9))",
+  },
 };
 
 const heroPrimaryBtnSX = {
@@ -276,9 +283,13 @@ const heroPrimaryBtnSX = {
   borderRadius: 999,
   fontWeight: 950,
   color: "#fff",
-  background: "linear-gradient(90deg, #22c55e, #4f46e5)",
+  background:
+    "linear-gradient(90deg, rgba(7, 4, 23, 0.9), rgba(27, 22, 117, 0.9))",
   boxShadow: "0 18px 50px rgba(0,0,0,0.35)",
-  "&:hover": { background: "linear-gradient(90deg, #16a34a, #4338ca)" },
+  "&:hover": {
+    background:
+      "linear-gradient(90deg,  rgba(1, 1, 5, 0.9), rgba(15, 13, 63, 0.9))",
+  },
 };
 
 const heroOutlineBtnSX = {

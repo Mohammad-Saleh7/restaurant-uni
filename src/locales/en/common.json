@@ -8,7 +8,8 @@
     "en": "English",
     "fa": "Persian",
     "light": "Light",
-    "dark": "Dark"
+    "dark": "Dark",
+    "title": "Cyrus the Great Restaurant"
   },
   "hero": {
     "title": "Cyrus The Great",
@@ -90,5 +91,13 @@
     "haveAccount": "Already have an account?",
     "welcome": "Your account was created successfully!",
     "passwordNotMatch": "Passwords do not match."
+  },
+  "ai": {
+    "title": "AI Recommendations",
+    "forYou": "Recommended For You",
+    "reset": "Reset AI taste",
+    "emptyHint": "Open a few dishes and add some to cart — then I'll learn your taste and suggest better options.",
+    "explain": "Because you like:",
+    "reasonCategory": "Similar category"
   }
 }

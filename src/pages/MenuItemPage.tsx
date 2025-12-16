@@ -1,13 +1,25 @@
-import React from "react";
+// src/pages/MenuItemPage.tsx
+import React, { useEffect, useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import restaurantData from "../data/restaurant.json";
-import { Box, Button, Container, Divider, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Divider,
+  Typography,
+  Stack,
+} from "@mui/material";
 import HeaderMenu from "../components/Headers/HeaderMenu";
 import { t } from "i18next";
 import MenuCard from "../components/Cards/MenuCard";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cartSlice";
+
+import AIRecommendations from "../components/AIRecommendations";
+import type { MenuCategory, MenuItem } from "../utils/aiTaste";
+import { trackAddToCart, trackView } from "../utils/aiTaste";
 
 // --- Types ---
 interface Item {
@@ -18,23 +30,44 @@ interface Item {
   image: string;
 }
 
+const categories = restaurantData.restaurant.menu
+  .categories as unknown as MenuCategory[];
+
 const allItems: Item[] = restaurantData.restaurant.menu.categories.flatMap(
   (cat) => cat.items
 );
+
+const toPersianNumber = (num: number | string) =>
+  num
+    .toString()
+    .replace(
+      /\d/g,
+      (d) => ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"][+d]
+    );
 
 const MenuItemPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { i18n } = useTranslation();
   const currentLang = i18n.language === "fa" ? "fa" : "en";
 
-  const item = allItems.find((item) => item.id === id);
-
-  const category = restaurantData.restaurant.menu.categories.find((cat) =>
-    cat.items.some((it) => it.id === id)
-  );
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const item = useMemo(() => allItems.find((x) => x.id === id), [id]);
+
+  const category = useMemo(() => {
+    return restaurantData.restaurant.menu.categories.find((cat) =>
+      cat.items.some((it) => it.id === id)
+    );
+  }, [id]);
+
+  const categoryId = category?.id || "unknown";
+
+  // ✅ Track view (taste signal)
+  useEffect(() => {
+    if (!item) return;
+    trackView(item.id, categoryId, item as unknown as MenuItem);
+  }, [item, categoryId]);
 
   if (!item) {
     return (
@@ -57,14 +90,6 @@ const MenuItemPage: React.FC = () => {
     ? category.items.filter((it) => it.id !== item.id).slice(0, 4)
     : [];
 
-  const toPersianNumber = (num: number | string) =>
-    num
-      .toString()
-      .replace(
-        /\d/g,
-        (d) => ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"][+d]
-      );
-
   const handleAddToCart = () => {
     dispatch(
       addToCart({
@@ -75,13 +100,16 @@ const MenuItemPage: React.FC = () => {
         image: item.image,
       })
     );
+
+    // ✅ stronger signal
+    trackAddToCart(item.id, categoryId, item as unknown as MenuItem);
   };
 
   return (
     <Box>
       <HeaderMenu />
 
-      <Container sx={{ mt: 2 }}>
+      <Container sx={{ mt: 2, pb: 6 }}>
         {/* --- TOP SECTION --- */}
         <Box
           sx={{
@@ -89,7 +117,7 @@ const MenuItemPage: React.FC = () => {
             gap: 4,
             gridTemplateColumns: { xs: "1fr", md: "1.2fr 1fr" },
             alignItems: "center",
-            mb: 6,
+            mb: 5,
           }}
         >
           <Box
@@ -98,17 +126,19 @@ const MenuItemPage: React.FC = () => {
             alt={item.name[currentLang]}
             sx={{
               width: "100%",
-              maxWidth: 450,
+              maxWidth: 480,
               justifySelf: "center",
+              borderRadius: 3,
+              boxShadow: "0 18px 45px rgba(0,0,0,0.18)",
             }}
           />
 
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 1.4 }}>
             <Typography
-              variant="h5"
+              variant="h4"
               sx={(theme) => ({
-                fontWeight: "bold",
-                fontSize: { xs: 22, md: 28 },
+                fontWeight: 1000,
+                fontSize: { xs: 22, md: 32 },
                 color:
                   theme.palette.mode === "dark"
                     ? "text.primary"
@@ -122,9 +152,10 @@ const MenuItemPage: React.FC = () => {
               sx={(theme) => ({
                 color:
                   theme.palette.mode === "dark"
-                    ? "text.secondary"
-                    : "text.lightPrimary",
-                fontSize: { xs: 16, md: 20 },
+                    ? "rgba(231,242,239,0.75)"
+                    : "rgba(103,52,27,0.80)",
+                fontSize: { xs: 14, md: 16 },
+                fontWeight: 900,
               })}
             >
               {category?.name[currentLang]}
@@ -134,9 +165,10 @@ const MenuItemPage: React.FC = () => {
               sx={(theme) => ({
                 color:
                   theme.palette.mode === "dark"
-                    ? "text.secondary"
-                    : "text.lightPrimary",
-                fontSize: { xs: 16, md: 20 },
+                    ? "rgba(231,242,239,0.75)"
+                    : "rgba(103,52,27,0.78)",
+                fontSize: { xs: 15, md: 18 },
+                lineHeight: 1.8,
               })}
             >
               {item.description[currentLang]}
@@ -146,48 +178,89 @@ const MenuItemPage: React.FC = () => {
               sx={(theme) => ({
                 color:
                   theme.palette.mode === "dark"
-                    ? "text.secondary"
+                    ? "text.primary"
                     : "text.lightPrimary",
                 fontSize: { xs: 18, md: 22 },
-                fontWeight: "bold",
+                fontWeight: 1000,
+                mt: 0.5,
               })}
             >
               {currentLang === "fa"
                 ? `${toPersianNumber(item.price)} ریال`
-                : `${item.price} Rial`}
+                : `${item.price.toLocaleString("en-US")} Rial`}
             </Typography>
 
-            <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
+            <Stack
+              direction="row"
+              spacing={1.5}
+              sx={{ mt: 1.5, flexWrap: "wrap" }}
+            >
               <Button
                 variant="contained"
-                sx={{
-                  bgcolor: "#51b6a1",
-                  color: "#E7F2EF",
-                }}
                 onClick={handleAddToCart}
+                sx={(theme) => ({
+                  px: 2.2,
+                  py: 1,
+                  borderRadius: 3,
+                  fontWeight: 1000,
+                  color: "#fff",
+                  background:
+                    theme.palette.mode === "dark"
+                      ? "linear-gradient(90deg, #22c55e, #4f46e5)"
+                      : "linear-gradient(90deg, #67341b, #fcbc4e)",
+                  boxShadow:
+                    theme.palette.mode === "dark"
+                      ? "0 10px 25px rgba(34,197,94,0.16)"
+                      : "0 12px 28px rgba(103,52,27,0.20)",
+                  "&:hover": { transform: "translateY(-1px)" },
+                  transition: "transform 140ms ease",
+                })}
               >
                 {t("button.addToCart")}
               </Button>
 
               <Button
                 variant="outlined"
-                color="error"
                 onClick={() => navigate(-1)}
+                sx={(theme) => ({
+                  px: 2.2,
+                  py: 1,
+                  borderRadius: 3,
+                  fontWeight: 1000,
+                  borderColor:
+                    theme.palette.mode === "dark"
+                      ? "rgba(255,255,255,0.28)"
+                      : "rgba(103,52,27,0.35)",
+                  color:
+                    theme.palette.mode === "dark"
+                      ? "rgba(231,242,239,0.90)"
+                      : theme.palette.text.lightPrimary,
+                  "&:hover": { transform: "translateY(-1px)" },
+                  transition: "transform 140ms ease",
+                })}
               >
                 {t("button.back")}
               </Button>
-            </Box>
+            </Stack>
           </Box>
         </Box>
 
-        <Divider />
+        {/* ✅ AI Recommendations */}
+        <AIRecommendations
+          categories={categories}
+          currentLang={currentLang}
+          excludeIds={[item.id]}
+          title={t("ai.title")}
+        />
+
+        <Divider sx={{ mt: 5 }} />
 
         {/* --- SIMILAR ITEMS --- */}
         <Box sx={{ mt: 4, mb: 4 }}>
           <Typography
             variant="h5"
             sx={(theme) => ({
-              fontWeight: "bold",
+              fontWeight: 1000,
               color:
                 theme.palette.mode === "dark"
                   ? "text.primary"
@@ -217,11 +290,7 @@ const MenuItemPage: React.FC = () => {
                 nameEn={similar.name.en}
                 descriptionFa={similar.description.fa}
                 descriptionEn={similar.description.en}
-                price={
-                  currentLang === "fa"
-                    ? `${toPersianNumber(similar.price)} ریال`
-                    : `${similar.price} Rial`
-                }
+                price={similar.price}
                 image={similar.image}
                 lang={currentLang}
                 id={similar.id}

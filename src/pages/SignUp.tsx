@@ -297,7 +297,7 @@ const Signup: React.FC = () => {
                   type="submit"
                   size="large"
                   disabled={isSubmitting}
-                  startIcon={<PersonAddRoundedIcon />}
+                  startIcon={<PersonAddRoundedIcon sx={{ ml: 1 }} />}
                   sx={(theme) => ({
                     py: 1.2,
                     borderRadius: 3,
@@ -306,17 +306,17 @@ const Signup: React.FC = () => {
                     color: "#fff",
                     background:
                       theme.palette.mode === "dark"
-                        ? "linear-gradient(90deg, #22c55e, #4f46e5)"
+                        ? "linear-gradient(90deg, rgba(7, 4, 23, 0.9), rgba(27, 22, 117, 0.9))"
                         : "linear-gradient(90deg, #67341b, #fcbc4e)",
                     boxShadow:
                       theme.palette.mode === "dark"
-                        ? "0 10px 25px rgba(34,197,94,0.16)"
+                        ? "0 10px 25px rgba(47, 20, 148, 0.53)"
                         : "0 12px 28px rgba(103,52,27,0.20)",
                     "&:hover": {
                       transform: "translateY(-1px)",
                       background:
                         theme.palette.mode === "dark"
-                          ? "linear-gradient(90deg, #16a34a, #4338ca)"
+                          ? "linear-gradient(90deg, rgba(1, 1, 5, 0.9), rgba(15, 13, 63, 0.9))"
                           : "linear-gradient(90deg, #5a2c17, #f7b640)",
                     },
                     transition: "transform 140ms ease",
