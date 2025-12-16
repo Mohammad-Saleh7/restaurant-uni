@@ -20,7 +20,6 @@ import { setSearch } from "../../redux/searchSlice";
 
 import SettingHeader from "../settings/SettingHeader";
 
-/* ---------------- Styled Search ---------------- */
 const SearchWrap = styled("div")(({ theme }) => ({
   position: "relative",
   width: "100%",
@@ -123,7 +122,6 @@ export default function HeaderMenu() {
                 : theme.palette.text.lightPrimary,
           })}
         >
-          {/* Brand */}
           <Box
             component={Link}
             to="/"
@@ -155,7 +153,6 @@ export default function HeaderMenu() {
               {t("hero.title")}
             </Typography>
 
-            {/* نسخه موبایل (کوتاه‌تر) */}
             <Typography
               sx={(theme) => ({
                 display: { xs: "block", sm: "none" },
@@ -171,7 +168,6 @@ export default function HeaderMenu() {
             </Typography>
           </Box>
 
-          {/* Search */}
           <Box sx={{ flex: 1, display: "flex", justifyContent: "center" }}>
             <SearchWrap>
               <SearchIconWrap>
@@ -187,7 +183,6 @@ export default function HeaderMenu() {
             </SearchWrap>
           </Box>
 
-          {/* Actions */}
           <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
             <IconButton
               onClick={() => navigate("/cart")}
@@ -221,7 +216,6 @@ export default function HeaderMenu() {
         </Toolbar>
       </AppBar>
 
-      {/* Spacer برای اینکه محتوا زیر AppBar نره (اگر صفحه‌هایی sticky مشکل داشتن) */}
       <Box sx={{ height: { xs: 10, md: 12 } }} />
     </>
   );

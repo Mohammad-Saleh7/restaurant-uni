@@ -38,7 +38,6 @@ const Footer: FC = () => {
           justifyContent="space-between"
           sx={{ textAlign: { xs: "center", md: "left" } }}
         >
-          {/* Left */}
           <Box>
             <Typography
               sx={(theme) => ({
@@ -70,7 +69,6 @@ const Footer: FC = () => {
             </Typography>
           </Box>
 
-          {/* Right (Links) */}
           <Stack
             direction="row"
             spacing={1}
@@ -132,7 +130,6 @@ const Footer: FC = () => {
 
 export default Footer;
 
-/* ---------------- Small reusable link button ---------------- */
 function FooterLink({
   to,
   children,

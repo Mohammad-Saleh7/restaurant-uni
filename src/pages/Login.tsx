@@ -51,7 +51,6 @@ const Login: React.FC = () => {
   const onSubmit = (data: LoginFormValues) => {
     setServerMsg("");
 
-    // اینجا بعداً می‌تونی auth واقعی بزنی
     if (!data.email || !data.password) {
       setServerMsg(t("login.enterInputs"));
       return;
@@ -253,7 +252,6 @@ const Login: React.FC = () => {
                   {t("login.login")}
                 </Button>
 
-                {/* اگر route ثبت نام داری */}
                 <Typography
                   variant="body2"
                   sx={(theme) => ({

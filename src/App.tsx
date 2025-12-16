@@ -21,7 +21,6 @@ import Signup from "./pages/SignUp";
 function AppLayout() {
   const location = useLocation();
 
-  // ✅ اینجا مشخص می‌کنیم کجا فوتر نباشه
   const hideFooter =
     location.pathname.startsWith("/auth/login") ||
     location.pathname.startsWith("/auth/signup") ||
@@ -35,7 +34,6 @@ function AppLayout() {
           <Route path="/menu" element={<MenuPage />} />
           <Route path="/menu/:id" element={<MenuItemPage />} />
 
-          {/* category routes */}
           <Route path="/appetizers" element={<Appetizers />} />
           <Route path="/salads" element={<Salads />} />
           <Route path="/maincourses" element={<MainCourses />} />
@@ -50,7 +48,6 @@ function AppLayout() {
         </Routes>
       </Box>
 
-      {/* ✅ Footer everywhere except auth pages */}
       {!hideFooter && <Footer />}
     </Box>
   );

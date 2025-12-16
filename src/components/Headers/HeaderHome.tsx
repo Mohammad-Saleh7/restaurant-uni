@@ -48,7 +48,6 @@ export default function HeaderHome(props) {
     <React.Fragment>
       <CssBaseline />
 
-      {/* ✅ Navbar Glass (Sticky) */}
       <ElevationScroll {...props}>
         <AppBar
           position="sticky"
@@ -138,7 +137,6 @@ export default function HeaderHome(props) {
         </AppBar>
       </ElevationScroll>
 
-      {/* ✅ Hero Section با بک‌گراند تصویرت */}
       <Box
         sx={{
           position: "relative",
@@ -150,7 +148,6 @@ export default function HeaderHome(props) {
           overflow: "hidden",
         }}
       >
-        {/* overlay برای خوانایی */}
         <Box
           sx={{
             position: "absolute",
@@ -160,7 +157,6 @@ export default function HeaderHome(props) {
           }}
         />
 
-        {/* glow */}
         <Box
           sx={{
             position: "absolute",

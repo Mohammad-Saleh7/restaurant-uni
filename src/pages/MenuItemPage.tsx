@@ -1,4 +1,3 @@
-// src/pages/MenuItemPage.tsx
 import React, { useEffect, useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -21,7 +20,6 @@ import AIRecommendations from "../components/AIRecommendations";
 import type { MenuCategory, MenuItem } from "../utils/aiTaste";
 import { trackAddToCart, trackView } from "../utils/aiTaste";
 
-// --- Types ---
 interface Item {
   id: string;
   name: { fa: string; en: string };
@@ -110,7 +108,6 @@ const MenuItemPage: React.FC = () => {
       <HeaderMenu />
 
       <Container sx={{ mt: 2, pb: 6 }}>
-        {/* --- TOP SECTION --- */}
         <Box
           sx={{
             display: "grid",
@@ -245,7 +242,6 @@ const MenuItemPage: React.FC = () => {
           </Box>
         </Box>
 
-        {/* ✅ AI Recommendations */}
         <AIRecommendations
           categories={categories}
           currentLang={currentLang}
@@ -255,7 +251,6 @@ const MenuItemPage: React.FC = () => {
 
         <Divider sx={{ mt: 5 }} />
 
-        {/* --- SIMILAR ITEMS --- */}
         <Box sx={{ mt: 4, mb: 4 }}>
           <Typography
             variant="h5"
