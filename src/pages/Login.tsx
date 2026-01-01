@@ -63,7 +63,7 @@ const Login: React.FC = () => {
 
   return (
     <Box
-      sx={(theme) => ({
+      sx={() => ({
         minHeight: "100vh",
         display: "grid",
         placeItems: "center",

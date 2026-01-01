@@ -69,7 +69,7 @@ const Signup: React.FC = () => {
 
   return (
     <Box
-      sx={(theme) => ({
+      sx={() => ({
         display: "grid",
         placeItems: "center",
         px: 2,

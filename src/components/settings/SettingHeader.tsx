@@ -1,6 +1,6 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
-import Menu, { MenuProps } from "@mui/material/Menu";
+import Menu, { type MenuProps } from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Divider from "@mui/material/Divider";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";

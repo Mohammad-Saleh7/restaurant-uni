@@ -15,7 +15,8 @@ import { t } from "i18next";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../redux/store";
+import type { RootState } from "../../redux/store";
+
 import { setSearch } from "../../redux/searchSlice";
 
 import SettingHeader from "../settings/SettingHeader";
