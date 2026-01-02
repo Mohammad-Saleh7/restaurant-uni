@@ -9,9 +9,11 @@ import {
   Typography,
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const Footer: FC = () => {
+  const { t } = useTranslation("common"); // ✅
+
   return (
     <Box
       component="footer"
@@ -22,7 +24,6 @@ const Footer: FC = () => {
           theme.palette.mode === "dark"
             ? "linear-gradient(180deg, rgba(21,29,50,0.85), rgba(49,54,71,0.85))"
             : "linear-gradient(180deg, #a8926a, #8f7a55)",
-
         borderTop:
           theme.palette.mode === "dark"
             ? "1px solid rgba(255,255,255,0.10)"
@@ -64,8 +65,10 @@ const Footer: FC = () => {
                 maxWidth: 520,
               })}
             >
-              {t("footer.subtitle") ||
-                "Fresh taste, fast order, smooth experience."}
+              {t(
+                "footer.subtitle",
+                "Fresh taste, fast order, smooth experience."
+              )}
             </Typography>
           </Box>
 
@@ -120,7 +123,7 @@ const Footer: FC = () => {
                   : "rgba(103,52,27,0.70)",
             })}
           >
-            {t("footer.madeBy") || "Made with ❤ using React + MUI"}
+            {t("footer.madeBy", "Made with ❤ using React + MUI")}
           </Typography>
         </Stack>
       </Container>
@@ -148,25 +151,20 @@ function FooterLink({
         borderRadius: 999,
         fontWeight: 900,
         letterSpacing: 0.2,
-
         color:
           theme.palette.mode === "dark"
             ? theme.palette.text.primary
             : theme.palette.text.lightPrimary,
-
         border:
           theme.palette.mode === "dark"
             ? "1px solid rgba(255,255,255,0.12)"
             : "1px solid rgba(103,52,27,0.22)",
-
         bgcolor:
           theme.palette.mode === "dark"
             ? "rgba(255,255,255,0.06)"
             : "rgba(255,255,255,0.35)",
-
         transition:
           "transform 140ms ease, background 140ms ease, border-color 140ms ease",
-
         "&:hover": {
           transform: "translateY(-1px)",
           bgcolor:

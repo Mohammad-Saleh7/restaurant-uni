@@ -434,8 +434,7 @@ export default function HeaderHome(props: any) {
                       textOverflow: "ellipsis",
                     }}
                   >
-                    {/* {t("navbar.title")} */}
-                    mmm
+                    {t("navbar.title")}
                   </Typography>
                 )}
               </Box>

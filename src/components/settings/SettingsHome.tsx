@@ -4,22 +4,15 @@ import Menu, { type MenuProps } from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Divider from "@mui/material/Divider";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import { t } from "i18next";
-import i18n from "../../i18n";
 import { IconButton } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import ModeToggle from "../ModeToggle";
 
 const StyledMenu = styled((props: MenuProps) => (
   <Menu
     elevation={0}
-    anchorOrigin={{
-      vertical: "bottom",
-      horizontal: "right",
-    }}
-    transformOrigin={{
-      vertical: "top",
-      horizontal: "right",
-    }}
+    anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+    transformOrigin={{ vertical: "top", horizontal: "right" }}
     {...props}
   />
 ))(({ theme }) => ({
@@ -31,53 +24,41 @@ const StyledMenu = styled((props: MenuProps) => (
     boxShadow:
       "0 0 0 0 rgba(255,255,255,0), 0 0 0 1px rgba(0,0,0,0.05), 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)",
     border: "2px solid black",
-
     "& .MuiMenu-list": {
       padding: "4px 0",
       backgroundColor: theme.palette.mode === "dark" ? "#151d32" : "#C4A484",
     },
-
     "& .MuiMenuItem-root": {
       backgroundColor: "transparent !important",
-
       "& .MuiSvgIcon-root": {
         fontSize: 18,
         color: theme.palette.text.secondary,
         marginRight: theme.spacing(1.5),
         backgroundColor: "transparent !important",
       },
-
-      "&:hover": {
-        backgroundColor: "transparent !important",
-      },
-      "&.Mui-focusVisible": {
-        backgroundColor: "transparent !important",
-      },
+      "&:hover": { backgroundColor: "transparent !important" },
+      "&.Mui-focusVisible": { backgroundColor: "transparent !important" },
       "&.Mui-selected, &.Mui-selected:hover": {
         backgroundColor: "transparent !important",
       },
-      "&:active": {
-        backgroundColor: "transparent !important",
-      },
+      "&:active": { backgroundColor: "transparent !important" },
     },
   },
 }));
 
 export default function SettingHome() {
+  const { t, i18n } = useTranslation("common"); // ✅ مهم
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-
   const open = Boolean(anchorEl);
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>): void => {
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = (): void => {
-    setAnchorEl(null);
-  };
+  const handleClose = () => setAnchorEl(null);
 
-  const changeLang = (lang: "en" | "fa"): void => {
-    i18n.changeLanguage(lang);
+  const changeLang = (lang: "en" | "fa") => {
+    i18n.changeLanguage(lang); // ✅ همین کافیه
     handleClose();
   };
 
@@ -89,7 +70,7 @@ export default function SettingHome() {
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
-        sx={() => ({
+        sx={{
           color: "#E7F2EF",
           textShadow: `
             0 2px 4px rgba(0,0,0,0.4),
@@ -98,17 +79,10 @@ export default function SettingHome() {
           display: "flex",
           gap: 1,
           fontSize: "1.3rem",
-
-          "&:hover": {
-            backgroundColor: "transparent !important",
-          },
-          "&.Mui-focusVisible": {
-            backgroundColor: "transparent !important",
-          },
-          "&.MuiButtonBase-root": {
-            backgroundColor: "transparent !important",
-          },
-        })}
+          "&:hover": { backgroundColor: "transparent !important" },
+          "&.Mui-focusVisible": { backgroundColor: "transparent !important" },
+          "&.MuiButtonBase-root": { backgroundColor: "transparent !important" },
+        }}
       >
         {t("navbar.setting")}
         <SettingsOutlinedIcon sx={{ fontSize: 30 }} />
@@ -119,9 +93,7 @@ export default function SettingHome() {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        MenuListProps={{
-          "aria-labelledby": "settings-button",
-        }}
+        MenuListProps={{ "aria-labelledby": "settings-button" }}
       >
         <MenuItem
           onClick={() => changeLang("en")}
@@ -160,10 +132,7 @@ export default function SettingHome() {
         <MenuItem
           onClick={handleClose}
           disableRipple
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-          }}
+          sx={{ display: "flex", justifyContent: "center" }}
         >
           <ModeToggle />
         </MenuItem>
