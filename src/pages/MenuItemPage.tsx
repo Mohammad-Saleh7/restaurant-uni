@@ -61,7 +61,6 @@ const MenuItemPage: React.FC = () => {
 
   const categoryId = category?.id || "unknown";
 
-  // ✅ Track view (taste signal)
   useEffect(() => {
     if (!item) return;
     trackView(item.id, categoryId, item as unknown as MenuItem);
@@ -99,7 +98,6 @@ const MenuItemPage: React.FC = () => {
       })
     );
 
-    // ✅ stronger signal
     trackAddToCart(item.id, categoryId, item as unknown as MenuItem);
   };
 

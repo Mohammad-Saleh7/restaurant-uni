@@ -1,4 +1,3 @@
-// src/pages/HomePage.tsx
 import React from "react";
 import HeaderHome from "../components/Headers/HeaderHome";
 import { Box, Container, Typography } from "@mui/material";
@@ -140,7 +139,6 @@ const HomePage: React.FC = () => {
           ))}
         </Box>
 
-        {/* ✅ AI "For You" */}
         <AIRecommendations
           categories={aiCategories}
           currentLang={currentLang}
